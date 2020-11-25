@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 
 public class Server {
@@ -18,6 +19,7 @@ public class Server {
 
             while (true){
                 Socket socket = serverSocket.accept();
+                User user = new User(null,socket);
                 Thread thread = new Thread(new Runnable() {
                     @Override
 
@@ -29,7 +31,7 @@ public class Server {
 
                             out.writeUTF("Input your name: ");
                             String userName = in.readUTF();
-                            User user = new User(userName,socket);
+                            user.setName(userName);
                             users.add(user);
                             user.sendMessage(users,"Client "+userName+" has connected "," Server ");
 
@@ -39,8 +41,11 @@ public class Server {
                                 user.sendMessage(users,request,userName);
                             }
 
-                            }catch (IOException exception) {
-                                exception.printStackTrace();
+                        }catch (IOException exception) {
+                            System.out.println("Client "+ user.getName()+ " had gone");
+                            String userLeft = user.getName();
+                            users.remove(user);
+                            user.sendMessage(users,"Client "+ userLeft + " had gone", "Server");
                         }
                     }
                 });
@@ -49,6 +54,7 @@ public class Server {
         }catch (IOException exception){
             exception.printStackTrace();
         }
+
     }
 }
 
