@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <center>
+      <TextArea fx:id="messegeWindow" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="357.0" prefWidth="353.0" promptText="Ваш Чат" BorderPane.alignment="CENTER">
+         <effect>
+            <Lighting bumpInput="$null" diffuseConstant="2.0" specularConstant="2.0" specularExponent="40.0" surfaceScale="0.0">
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color red="0.39230018854141235" green="0.6566764116287231" blue="0.9210526347160339" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect>
+         <font>
+            <Font name="Berlin Sans FB" size="16.0" />
+         </font></TextArea>
+   </center>
+   <bottom>
+      <HBox fillHeight="false">
+         <children>
+            <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" onAction="#send" prefHeight="25.0" prefWidth="410.0" promptText="Текст сообщения">
+               <HBox.margin>
+                  <Insets left="15.0" right="2.0" />
+               </HBox.margin>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </TextField>
+            <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#send" prefHeight="25.0" prefWidth="227.0" text="Отправить" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="3.0" right="20.0" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
+   </bottom>
+   <right>
+      <BorderPane maxHeight="1.7976931348623157E308" prefHeight="402.0" prefWidth="212.0" BorderPane.alignment="TOP_CENTER">
+         <center>
+            <TextArea editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="332.0" prefWidth="191.0" promptText="Список контактов" BorderPane.alignment="CENTER_RIGHT">
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+               <effect>
+                  <Lighting diffuseConstant="1.44" specularConstant="0.0" specularExponent="13.95" surfaceScale="0.8">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant azimuth="61.74" />
+                     </light>
+                  </Lighting>
+               </effect>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin></TextArea>
+         </center>
+         <top>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="25.0" prefWidth="100.0" promptText="Поиск" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="4.0" right="2.0" />
+                     </HBox.margin>
+                     <effect>
+                        <Lighting diffuseConstant="2.0" specularConstant="2.0" specularExponent="40.0">
+                           <bumpInput>
+                              <Shadow blurType="ONE_PASS_BOX">
+                                 <color>
+                                    <Color red="1.0" />
+                                 </color>
+                              </Shadow>
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </TextField>
+                  <ToggleButton blendMode="DARKEN" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="В сети">
+                     <HBox.margin>
+                        <Insets left="2.0" right="4.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+               </children>
+            </HBox>
+         </top>
+         <right>
+            <ScrollBar orientation="VERTICAL" BorderPane.alignment="CENTER">
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" height="46.25" radius="23.5625" spread="0.03" width="50.0">
+                     <color>
+                        <Color red="0.20000000298023224" green="0.08235294371843338" blue="0.5254902243614197" />
+                     </color>
+                  </DropShadow>
+               </effect></ScrollBar>
+         </right>
+      </BorderPane>
+   </right>
+   <left>
+      <ScrollBar orientation="VERTICAL" BorderPane.alignment="CENTER">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" height="42.5" radius="22.625" spread="0.3" width="50.0">
+               <color>
+                  <Color red="0.20000000298023224" green="0.08235294371843338" blue="0.5254902243614197" />
+               </color>
+            </DropShadow>
+         </effect></ScrollBar>
+   </left>
+   <effect>
+      <Lighting bumpInput="$null" diffuseConstant="2.0" specularConstant="0.0" specularExponent="0.0" surfaceScale="1.51">
+         <light>
+            <Light.Distant azimuth="57.56">
+               <color>
+                  <Color red="0.5847952961921692" green="0.6705653071403503" blue="0.8421052694320679" />
+               </color>
+            </Light.Distant>
+         </light>
+      </Lighting>
+   </effect>
+   <top>
+      <Button onAction="#connect" mnemonicParsing="false" text="Подключиться" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
