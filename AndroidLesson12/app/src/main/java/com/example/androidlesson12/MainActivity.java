@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 if (questions[questionIndex].isAnswerTrue())
                     Toast.makeText(MainActivity.this, R.string.correct, Toast.LENGTH_SHORT ).show();
                 else
-                    Toast.makeText(MainActivity.this, R.string.incorrect,Toast.LENGTH_SHORT);
-                questionIndex++;
+                    Toast.makeText(MainActivity.this, R.string.incorrect,Toast.LENGTH_SHORT).show();
+                questionIndex=(questionIndex+1)%questionIndex;
                 textView.setText(questions[questionIndex].getQuestionResId());
                 }
         });
@@ -50,9 +50,14 @@ public class MainActivity extends AppCompatActivity {
         noBtn.setOnClickListener(new View.OnClickListener() { //ожидание клика на кнопки НЕТ
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Не правильно", Toast.LENGTH_SHORT).show();
-
+                if (questions[questionIndex].isAnswerTrue())
+                    Toast.makeText(MainActivity.this, R.string.incorrect, Toast.LENGTH_SHORT ).show();
+                else
+                    Toast.makeText(MainActivity.this, R.string.correct,Toast.LENGTH_SHORT).show();
+                questionIndex=(questionIndex+1)%questionIndex;
+                textView.setText(questions[questionIndex].getQuestionResId());
             }
+
         });
     }
 }
